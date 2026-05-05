@@ -11,7 +11,7 @@
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/home.css">
-  <link rel="icon" href="./assets/icon/favicon2.ico">
+  
   <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
@@ -28,7 +28,7 @@
 
           <li><a href="login.html">Login</a></li>
 
-          <li class="agora"><a href="#">Cadastro</a></li>
+          <li><a href="cadastro.html">Cadastro</a></li>
 
     </div>
 
@@ -69,7 +69,7 @@
 
         <!-- LAGO DOS CISNES -->
 
-        <button onclick="abrir(historia_lago)" class="botao_estilo">
+        <button onclick="abrir(historia_lago, 'Lago-Dos-Cisnes')" class="botao_estilo">
           <p>Lago dos Cisnes</p><img class="icone"" src=" ./assets/icon/cisne.png" alt="">
         </button>
 
@@ -140,7 +140,7 @@
 
         <!-- GISELLE -->
 
-        <button onclick="abrir(historia_giselle)" class="botao_estilo">
+        <button onclick="abrir(historia_giselle, 'Giselle')" class="botao_estilo">
           <p>Giselle</p><img class="icone"" src=" ./assets/icon/fantasma.png" alt="">
         </button>
 
@@ -236,7 +236,7 @@
 
 
 
-      <button onclick="abrir(historia_nozes)" class="botao_estilo">
+      <button onclick="abrir(historia_nozes, 'Quebra-Nozes')" class="botao_estilo">
         <p>Quebra Nozes</p><img class="icone"" src=" ./assets/icon/nozes.png" alt="">
       </button>
 
@@ -338,6 +338,8 @@
           </div>
         </div>
       </div>
+      </div>
+      </div>
 
       <div class="footer">
         <div class="container">
@@ -349,12 +351,26 @@
 
 </html>
 <script>
-  function abrir(historia) {
+  function abrir(historia, nameBallet) {
     historia.style.display = "block";
     site_todo.style.filter = "blur(50px)";
     proposito.style.filter = "blur(50px)";
     document.body.style.overflow = "hidden";
+
+    fetch("/usuarios/registrarLeitura", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            idUsuarioServer: sessionStorage.ID_USUARIO,
+            balletServer: nomeBallet
+        })
+    }).then(res => {
+        console.log("Acesso registrado no banco!");
+    });
+
   }
+
+  
 
   function fechar(historia) {
     

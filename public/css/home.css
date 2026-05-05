@@ -71,10 +71,7 @@ body {
   align-self: flex-end;
 }
 
-.agora a {
-  font-weight: 800;
-  
-}
+
 
 /*---VIDEO DO FUNDO---*/
 
@@ -316,9 +313,12 @@ body {
 /*--- FOOTER  ---*/
 .footer {
   background-color: #5d4d3e;
-  padding: 20px 0;
+  padding: 16px 0;
   color: #f8f1e9;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  justify-items: center;
 }
 
 
