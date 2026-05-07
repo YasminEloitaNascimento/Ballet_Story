@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #d8c8b8;
+  display: flex;
+}
+
+/* menu-lateral */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #5d4d3e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  gap: 30px;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  color: #f8f1e9;
+  font-size: 18px;
+  text-align: center;
+}
+
+.menu-lateral nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.item-menu {
+  text-decoration: none;
+  color: #d8c8b8;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.item-menu:hover,
+.item-menu.ativo {
+  background-color: #8d7966;
+  color: #f8f1e9;
+}
+
+.btn-sair {
+  margin-top: auto;
+  background-color: transparent;
+  border: 2px solid #a8a39d;
+  color: #a8a39d;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-sair:hover {
+  background-color: #a8a39d;
+  color: #5d4d3e;
+}
+
+.conteudo {
+  margin-left: 220px;
+  padding: 40px;
+  width: 100%;
+}
+
+.boas-vindas {
+  margin-bottom: 30px;
+}
+
+.boas-vindas h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  color: #483d33;
+}
+
+.boas-vindas p {
+  color: #8d7966;
+  font-size: 14px;
+}
+
+/* CARD PERFIL */
+.card-perfil {
+  background-color: #f8f1e9;
+  border-radius: 0 30px 0 30px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+}
+
+.avatar {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.card-perfil h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  color: #483d33;
+  margin-bottom: 5px;
+}
+
+.perfil-email {
+  color: #a8a39d;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.badge-cargo {
+  display: inline-block;
+  background-color: #8d7966;
+  color: #f8f1e9;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: 'Cinzel', serif;
+}
+
+/* ÁREA DE INFORMAÇÕES */
+.area-info {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.box-info {
+  background-color: #f8f1e9;
+  border-radius: 0 20px 0 20px;
+  padding: 25px;
+  flex: 1;
+  min-width: 280px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.box-info h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  color: #483d33;
+  border-bottom: 2px solid #d8c8b8;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.linha-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0e8df;
+  font-size: 14px;
+  color: #5d4d3e;
+}
+
+.texto-cargo {
+  font-size: 14px;
+  color: #5d4d3e;
+  margin-bottom: 8px;
+}
+
+.barra-fundo {
+  background-color: #d8c8b8;
+  border-radius: 10px;
+  height: 12px;
+  margin-top: 10px;
+}
+
+.barra-progresso {
+  background-color: #8d7966;
+  border-radius: 10px;
+  height: 12px;
+  width: 0%;
+  transition: width 0.5s;
+}
+
+.sem-dados {
+  font-size: 14px;
+  color: #a8a39d;
+}
+
+.sem-dados a {
+  color: #8d7966;
+}
+
+/* EDITAR */
+.area-editar {
+  background-color: #f8f1e9;
+  border-radius: 0 20px 0 20px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.area-editar h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  color: #483d33;
+  border-bottom: 2px solid #d8c8b8;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.campo span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8d7966;
+  text-transform: uppercase;
+}
+
+.campo input {
+  background-color: #f0e8df;
+  border: 1px solid #d8c8b8;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #483d33;
+  outline: none;
+}
+
+.campo input:focus {
+  border-color: #8d7966;
+}
+
+.botao {
+  background-color: #8d7966;
+  color: #f8f1e9;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 30px;
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao:hover {
+  background-color: #7a6856;
+}
+
+.msg-salvo {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #5d4d3e;
+}

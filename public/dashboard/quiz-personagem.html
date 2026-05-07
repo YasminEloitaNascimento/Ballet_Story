@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ballet History | Qual personagem sou?</title>
+  <link rel="stylesheet" href="../css/quiz-personagem.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="menu-lateral">
+    <h1 class="logo">Ballet History</h1>
+    <nav>
+      <a href="dashboard.html" class="item-menu">Dashboard</a>
+      <a href="historias.html" class="item-menu">Histórias</a>
+      <a href="quiz-personagem.html" class="item-menu ativo">Qual personagem sou?</a>
+      <a href="perfil.html" class="item-menu">Meu Perfil</a>
+    </nav>
+    <button class="btn-sair" onclick="sair()">Sair</button>
+  </div>
+
+  <div class="conteudo">
+
+    <div class="boas-vindas">
+      <h2>Qual personagem combina com você?</h2>
+      <p>Responda e descubra qual personagem do ballet clássico é sua essência</p>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="area-quiz">
+      <div class="progresso">
+        <span id="numero-pergunta">Pergunta 1 de 6</span>
+        <div class="barra-fundo">
+          <div class="barra-progresso" id="barra-prog" style="width:16%"></div>
+        </div>
+      </div>
+
+      <div class="card-pergunta">
+        <p id="texto-pergunta"></p>
+        <div class="alternativas" id="area-alternativas"></div>
+      </div>
+
+      <button class="btn-proximo" id="btn-proximo" onclick="proximaPergunta()" style="display:none;">
+        Próxima →
+      </button>
+    </div>
+
+    <!-- RESULTADO -->
+    <div id="area-resultado" style="display:none;">
+      <div class="card-resultado">
+        <h2>Você é: <span id="nome-personagem"></span></h2>
+        <p id="descricao-personagem"></p>
+        <p class="ballet-personagem" id="ballet-personagem"></p>
+        <button class="btn-quiz" onclick="window.location='perfil.html'">Ver meu perfil</button>
+        <button class="btn-quiz btn-secundario" onclick="reiniciar()">Refazer o quiz</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script>
+  if (!sessionStorage.NOME_USUARIO) {
+    alert("Você precisa estar logada para descobrir seu personagem!");
+    window.location = "../login.html";
+  }
+
+  // "ponto" para um personagem
+  // O — Odette | I — Odile | G — Giselle | C — Clara | M — Myrtha | F — Fada Açucarada
+
+
+  // JSONNNN
+  var perguntas = [
+    {
+      pergunta: "Como você reage quando alguém te magoa?",
+      alternativas: [
+        { texto: "Sofro muito, mas perdoo com o tempo", personagem: "G" },
+        { texto: "Fico fria e me distancio", personagem: "M" },
+        { texto: "Choro, mas guardo o amor no coração", personagem: "O" },
+        { texto: "Uso isso para me tornar mais forte", personagem: "I" }
+      ]
+    },
+    {
+      pergunta: "Qual é a sua maior qualidade?",
+      alternativas: [
+        { texto: "Bondade", personagem: "O" },
+        { texto: "Curiosidade", personagem: "C" },
+        { texto: "Determinação", personagem: "I" },
+        { texto: "Gentileza", personagem: "F" }
+      ]
+    },
+    {
+      pergunta: "Qual cenário te atrai mais?",
+      alternativas: [
+        { texto: "Um lugar calmo com a luz de lua", personagem: "O" },
+        { texto: "Uma floresta encantada cheia de mistério", personagem: "G" },
+        { texto: "Uma festa agitada e com música", personagem: "I" },
+        { texto: "Um lugar divertido cheio de doces e cores", personagem: "C" }
+      ]
+    },
+    {
+      pergunta: "Como você age sob pressão?",
+      alternativas: [
+        { texto: "Me mantenho firme e controlada", personagem: "M" },
+        { texto: "Ajo com o coração, não a razão", personagem: "G" },
+        { texto: "Improviso com criatividade", personagem: "C" },
+        { texto: "Fico calma, e só faço", personagem: "F" }
+      ]
+    },
+    {
+      pergunta: "O que mais te define em uma relação?",
+      alternativas: [
+        { texto: "Lealdade absoluta", personagem: "O" },
+        { texto: "Paixão intensa e proteção", personagem: "G" },
+        { texto: "Independência", personagem: "I" },
+        { texto: "Alegria e cuidado com o outro", personagem: "F" }
+      ]
+    },
+    {
+      pergunta: "Qual seria seu papel numa peça de teatro?",
+      alternativas: [
+        { texto: "A protagonista pura e trágica", personagem: "O" },
+        { texto: "A vilã fascinante", personagem: "I" },
+        { texto: "A heroína corajosa", personagem: "C" },
+        { texto: "A líder justa e poderosa", personagem: "M" }
+      ]
+    }
+  ];
+
+  var contagem = { O: 0, I: 0, G: 0, C: 0, M: 0, F: 0 };
+  var perguntaAtual = 0;
+  var respondeu = false;
+
+  var personagens = {
+    O: {
+      nome: "Odette — O Cisne Branco",
+      descricao: "Você é pura, delicada e leal. Seu amor é profundo e resistente, mesmo diante das adversidades. Você tem uma beleza serena e uma força silenciosa que inspira quem está ao seu redor.",
+      ballet: "De: O Lago dos Cisnes"
+    },
+    I: {
+      nome: "Odile — O Cisne Negro",
+      descricao: "Você é magnética, determinada e fascinante. Sabe exatamente o que quer e usa seu charme com maestria. Independente e poderosa, você cativa sem esforço.",
+      ballet: "De: O Lago dos Cisnes"
+    },
+    G: {
+      nome: "Giselle",
+      descricao: "Você tem um coração imenso, cheio de amor e perdão. Mesmo após ser ferida, sua compaixão supera a mágoa. Você é intensa, apaixonada e move as pessoas ao seu redor.",
+      ballet: "De: Giselle"
+    },
+    C: {
+      nome: "Clara",
+      descricao: "Você é curiosa, corajosa e cheia de imaginação! Adora aventuras e enfrenta os desafios com criatividade. Sua energia alegre transforma o mundo ao seu redor em algo mágico.",
+      ballet: "De: O Quebra-Nozes"
+    },
+    M: {
+      nome: "Myrtha — Rainha das Wilis",
+      descricao: "Você é uma líder nata. Firme, justa e inabalável, você não deixa as emoções ofuscarem seu julgamento. Tem uma presença marcante que inspira respeito imediato.",
+      ballet: "De: Giselle"
+    },
+    F: {
+      nome: "Fada Açucarada",
+      descricao: "Você é graciosa, acolhedora e traz alegria para todos. Seu dom é criar ambientes mágicos onde todos se sentem bem-vindos. Você é a alma das celebrações!",
+      ballet: "De: O Quebra-Nozes"
+    }
+  };
+
+  function carregarPergunta() {
+    var p = perguntas[perguntaAtual];
+    document.getElementById("texto-pergunta").innerHTML = p.pergunta;
+    document.getElementById("numero-pergunta").innerHTML = "Pergunta " + (perguntaAtual + 1) + " de " + perguntas.length;
+    document.getElementById("barra-prog").style.width = ((perguntaAtual + 1) / perguntas.length * 100) + "%";
+    document.getElementById("btn-proximo").style.display = "none";
+    respondeu = false;
+
+    var html = "";
+    for (var i = 0; i < p.alternativas.length; i++) {
+      var alt = p.alternativas[i];
+      html += '<button class="alternativa" onclick="responder(this, \'' + alt.personagem + '\')">' + alt.texto + '</button>';
+    }
+    document.getElementById("area-alternativas").innerHTML = html;
+  }
+
+  function responder(botao, personagemEscolhido) {
+    if (respondeu) return;
+    respondeu = true;
+    contagem[personagemEscolhido]++;
+    botao.classList.add("selecionada");
+    var bots = document.querySelectorAll(".alternativa");
+    for (var i = 0; i < bots.length; i++) { bots[i].disabled = true; }
+    document.getElementById("btn-proximo").style.display = "block";
+  }
+
+  function proximaPergunta() {
+    perguntaAtual++;
+    if (perguntaAtual < perguntas.length) {
+      carregarPergunta();
+    } else {
+      mostrarResultado();
+    }
+  }
+
+  function mostrarResultado() {
+    // Encontra o personagem com mais pontos
+    
+    var maiorChave = "O";
+    var maiorValor = 0;
+    for (var chave in contagem) {
+      if (contagem[chave] > maiorValor) {
+        maiorValor = contagem[chave];
+        maiorChave = chave;
+      }
+    }
+
+    var resultado = personagens[maiorChave];
+    const personagemDescoberto = resultado.nome;
+
+    document.getElementById("nome-personagem").innerHTML = resultado.nome;
+    document.getElementById("descricao-personagem").innerHTML = resultado.descricao;
+    document.getElementById("ballet-personagem").innerHTML = resultado.ballet;
+
+    // Salva no banco)
+    sessionStorage.PERSONAGEM_IDEAL = personagemDescoberto;
+
+    fetch("/usuarios/salvarPersonagem", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        idUsuarioServer: sessionStorage.ID_USUARIO,
+        personagemServer: personagemDescoberto
+    })
+}).then(res => {
+    console.log("Personagem salvo no banco!");
+});
+
+    document.getElementById("area-quiz").style.display = "none";
+    document.getElementById("area-resultado").style.display = "block";
+  }
+
+  function reiniciar() {
+    perguntaAtual = 0;
+    contagem = { O: 0, I: 0, G: 0, C: 0, M: 0, F: 0 };
+    document.getElementById("area-quiz").style.display = "block";
+    document.getElementById("area-resultado").style.display = "none";
+    carregarPergunta();
+  }
+
+  function sair() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+  }
+
+  carregarPergunta();
+</script>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ballet History | Meu Perfil</title>
+  <link rel="stylesheet" href="../css/perfil.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="menu-lateral">
+    <h1 class="logo">Ballet History</h1>
+    <nav>
+      <a href="dashboard.html" class="item-menu">Dashboard</a>
+      <a href="historias.html" class="item-menu">Histórias</a>
+      <a href="quiz-personagem.html" class="item-menu">Qual personagem sou?</a>
+      <a href="perfil.html" class="item-menu ativo">Meu Perfil</a>
+    </nav>
+    <button class="btn-sair" onclick="sair()">Sair</button>
+  </div>
+
+  <div class="conteudo">
+
+    <div class="boas-vindas">
+      <h2>Meu Perfil</h2>
+      <p>Suas informações e conquistas</p>
+    </div>
+
+    <!-- CARD PRINCIPAL DO PERFIL -->
+    <div class="card-perfil">
+      <div class="avatar"></div>
+      <h2 id="perfil-nome"></h2>
+      <p id="perfil-email" class="perfil-email"></p>
+      <div class="badge-cargo" id="perfil-cargo"></div>
+    </div>
+
+    <!-- INFORMAÇÕES -->
+    <div class="area-info">
+
+      <div class="box-info">
+        <h3>Estatísticas</h3>
+        <div class="linha-info">
+          <span>Pontuação total:</span>
+          <strong id="info-pontos"></strong>
+        </div>
+        <div class="linha-info">
+          <span>Quizzes realizados:</span>
+          <strong id="info-quizzes"></strong>
+        </div>
+        <div class="linha-info">
+          <span>Personagem ideal:</span>
+          <strong id="info-personagem"></strong>
+        </div>
+      </div>
+
+      <div class="box-info">
+        <h3>Progresso de Cargo</h3>
+        <p class="texto-cargo">Cargo atual: <strong id="cargo-atual"></strong></p>
+        <p class="texto-cargo">Próximo cargo: <strong id="proximo-cargo"></strong></p>
+        <p class="texto-cargo">Pontos para o próximo: <strong id="pontos-faltam"></strong></p>
+        <div class="barra-fundo">
+          <div class="barra-progresso" id="barra"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- QUIZZES FEITOS -->
+    <div class="box-info" style="margin-top: 20px;">
+      <h3>Quizzes realizados</h3>
+      <div id="lista-quizzes">
+        <p class="sem-dados"><a href="historias.html">Vá para as histórias!</a></p>
+      </div>
+    </div>
+
+    <!-- BOTÃO EDITAR PERFIL -->
+    <div class="area-editar">
+      <h3>Editar informações</h3>
+      <div class="campo">
+        <span>Nome:</span>
+        <input type="text" id="input-nome" placeholder="Seu nome" />
+      </div>
+      <div class="campo">
+        <span>Senha nova:</span>
+        <input type="password" id="input-senha" placeholder="••••••" />
+      </div>
+      <button class="botao" onclick="salvarEdicao()">Salvar alterações</button>
+      <p id="msg-salvo" class="msg-salvo"></p>
+    </div>
+
+  </div>
+
+</body>
+<script>
+  var nome = sessionStorage.NOME_USUARIO || "Usuária(o)";
+  var email = sessionStorage.EMAIL_USUARIO || "—";
+  var pontos = parseInt(sessionStorage.PONTUACAO) || 0;
+  var personagem = sessionStorage.PERSONAGEM_IDEAL || "Ainda não descobriu";
+  var quizzes = parseInt(sessionStorage.QUIZZES_FEITOS) || 0;
+
+  document.getElementById("perfil-nome").innerHTML = nome;
+  document.getElementById("perfil-email").innerHTML = email;
+  document.getElementById("info-pontos").innerHTML = pontos + " pts";
+  document.getElementById("info-quizzes").innerHTML = quizzes;
+  document.getElementById("info-personagem").innerHTML = personagem;
+  document.getElementById("input-nome").value = nome;
+
+  function definirCargo(p) {
+    if (p >= 2500) return "Primeira(o) Bailarina(o)";
+    if (p >= 1200) return "Solista";
+    if (p >= 500) return "Coryphée";
+    if (p >= 100) return "Corpo de Baile";
+    return "Estagiária(o)";
+  }
+
+  function proximoCargo(p) {
+    if (p < 100) return { nome: "Corpo de Baile", faltam: 100 - p, maximo: 100 };
+    if (p < 500) return { nome: "Coryphée", faltam: 500 - p, maximo: 500 };
+    if (p < 1200) return { nome: "Solista", faltam: 1200 - p, maximo: 1200 };
+    if (p < 2500) return { nome: "Primeira Bailarina", faltam: 2500 - p, maximo: 2500 };
+    return { nome: "Você chegou ao topo!", faltam: 0, maximo: 2500 };
+  }
+
+  var cargo = definirCargo(pontos);
+  var proximo = proximoCargo(pontos);
+
+  document.getElementById("perfil-cargo").innerHTML = cargo;
+  document.getElementById("cargo-atual").innerHTML = cargo;
+  document.getElementById("proximo-cargo").innerHTML = proximo.nome;
+  document.getElementById("pontos-faltam").innerHTML = proximo.faltam + " pts";
+
+  var porcentagem = Math.min((pontos / proximo.maximo) * 100, 100);
+  document.getElementById("barra").style.width = porcentagem + "%";
+
+  function salvarEdicao() {
+    var novoNome = document.getElementById("input-nome").value;
+    if (novoNome != "") {
+      sessionStorage.NOME_USUARIO = novoNome;
+      document.getElementById("perfil-nome").innerHTML = novoNome;
+      document.getElementById("msg-salvo").innerHTML = "Nome atualizado com sucesso!";
+    }
+  }
+  
+
+  // Localize a função carregarPerfil e deixe-a assim:
+function carregarPerfil() {
+    fetch("/usuarios/obterDadosDesempenho/" + sessionStorage.ID_USUARIO)
+        .then(function (res) {
+            if (res.status === 204 || res.status === 404) return [];
+            return res.json();
+        })
+        .then(function (dados) {
+            var container = document.getElementById("lista-quizzes");
+
+            if (!dados || dados.length === 0) {
+                container.innerHTML = '<p class="sem-dados"><a href="historias.html">Vá para as histórias e faça seu primeiro quiz!</a></p>';
+                return;
+            }
+
+            var html = "";
+            for (var i = 0; i < dados.length; i++) {
+                var tentativa = dados[i];
+                var nota = Number(tentativa.pontuacao).toFixed(1);
+                html += '<div class="linha-info">';
+                html += '  <span>' + tentativa.nome_ballet + '</span>';
+                html += '  <strong>' + nota + ' / 10</strong>';
+                html += '</div>';
+            }
+            container.innerHTML = html;
+        })
+        .catch(function (erro) {
+            console.log("Erro ao carregar tentativas:", erro);
+            document.getElementById("lista-quizzes").innerHTML = '<p class="sem-dados">Erro ao carregar tentativas.</p>';
+        });
+}
+
+// ADICIONE ao final do script, após todas as definições:
+window.onload = function() {
+  if (!sessionStorage.ID_USUARIO) {
+    window.location = "../login.html";
+    return;
+  }
+  carregarPerfil();
+};
+
+  function sair() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+  }
+</script>
+</html>

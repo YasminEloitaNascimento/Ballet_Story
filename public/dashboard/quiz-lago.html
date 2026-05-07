@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ballet History | Quiz - Lago dos Cisnes</title>
+    <link rel="stylesheet" href="../css/quiz.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div class="pagina-quiz">
+
+        <div class="cabecalho-quiz">
+            <a href="historias.html" class="btn-voltar">← Voltar</a>
+            <h1>Quiz: O Lago dos Cisnes</h1>
+            <p>Responda as perguntas sobre a história</p>
+        </div>
+
+        <!--  perguta atual -->
+        <div id="area-quiz">
+            <div class="progresso">
+                <span id="numero-pergunta">Pergunta 1 de 5</span>
+                <div class="barra-fundo">
+                    <div class="barra-progresso" id="barra-prog" style="width: 20%"></div>
+                </div>
+            </div>
+
+            <div class="card-pergunta">
+                <p id="texto-pergunta">Carregando...</p>
+                <div class="alternativas" id="area-alternativas"></div>
+            </div>
+
+            <button class="btn-proximo" id="btn-proximo" onclick="proximaPergunta()" style="display:none;">
+                Próxima →
+            </button>
+        </div>
+
+        <!-- RESULTADO (mostrado ao terminar) -->
+        <div id="area-resultado" style="display:none;">
+            <div class="card-resultado">
+                <h2>Você acertou <span id="placar">0</span> de 5!</h2>
+                <p id="mensagem-resultado"></p>
+                <button class="btn-quiz" onclick="window.location='historias.html'">Ver outras histórias</button>
+                <button class="btn-quiz btn-secundario" onclick="reiniciar()">Tentar novamente</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    // Verificando se está logado
+    if (!sessionStorage.NOME_USUARIO) {
+        alert("Você precisa estar logado para fazer o quiz!");
+        window.location = "../login.html";
+    }
+
+    // Perguntas do quiz
+    var perguntas = [
+        {
+            pergunta: "Quem transformou Odette e suas companheiras em cisnes?",
+            correta: "Von Rothbart",
+            erradas: ["O Príncipe Siegfried", "O Rei dos Ratos", "Drosselmeyer"]
+        },
+        {
+            pergunta: "O que pode quebrar a maldição que pesa sobre Odette?",
+            correta: "O amor verdadeiro e eterno",
+            erradas: ["Uma espada mágica", "O nascer do sol", "A morte do feiticeiro"]
+        },
+        {
+            pergunta: "Como se chama a filha do feiticeiro que se passa por Odette?",
+            correta: "Odile",
+            erradas: ["Myrtha", "Giselle", "Clara"]
+        },
+        {
+            pergunta: "O que Siegfried faz no baile que quebra sua promessa com Odette?",
+            correta: "Declara amor a Odile pensando ser Odette",
+            erradas: ["Dança com outra pretendente", "Esquece o encontro no lago", "Foge do baile"]
+        },
+        {
+            pergunta: "Quem compôs O Lago dos Cisnes?",
+            correta: "Pyotr Ilyich Tchaikovsky",
+            erradas: ["Adolphe Adam", "Ludwig van Beethoven", "Wolfgang Mozart"]
+        }
+    ];
+
+    var perguntaAtual = 0;
+    var pontos = 0;
+    var respondeu = false;
+
+    function carregarPergunta() {
+        var p = perguntas[perguntaAtual];
+        document.getElementById("texto-pergunta").innerHTML = p.pergunta;
+        document.getElementById("numero-pergunta").innerHTML = "Pergunta " + (perguntaAtual + 1) + " de " + perguntas.length;
+        document.getElementById("barra-prog").style.width = ((perguntaAtual + 1) / perguntas.length * 100) + "%";
+        document.getElementById("btn-proximo").style.display = "none";
+        respondeu = false;
+
+        // alternativas aleatorias
+        var todas = [p.correta].concat(p.erradas);
+        todas = todas.sort(function () { return Math.random() - 0.5; });
+
+        var html = "";
+        for (var i = 0; i < todas.length; i++) {
+            html += '<button class="alternativa" onclick="responder(this, \'' + todas[i].replace(/'/g, "\\'") + '\')">' + todas[i] + '</button>';
+        }
+        document.getElementById("area-alternativas").innerHTML = html;
+    }
+
+    function responder(botao, escolha) {
+        if (respondeu) return;
+        respondeu = true;
+
+        var correta = perguntas[perguntaAtual].correta;
+        var botoesAlt = document.querySelectorAll(".alternativa");
+
+        for (var i = 0; i < botoesAlt.length; i++) {
+            botoesAlt[i].disabled = true;
+            if (botoesAlt[i].innerHTML == correta) {
+                botoesAlt[i].classList.add("certa");
+            }
+        }
+
+        if (escolha == correta) {
+            pontos++;
+            botao.classList.add("certa");
+        } else {
+            botao.classList.add("errada");
+        }
+
+        document.getElementById("btn-proximo").style.display = "block";
+    }
+
+    function proximaPergunta() {
+        perguntaAtual++;
+        if (perguntaAtual < perguntas.length) {
+            carregarPergunta();
+        } else {
+            mostrarResultado();
+        }
+    }
+
+    function mostrarResultado() {
+        document.getElementById("area-quiz").style.display = "none";
+        document.getElementById("area-resultado").style.display = "block";
+        document.getElementById("placar").innerHTML = pontos;
+
+        if (pontos == 5) {
+            
+            document.getElementById("mensagem-resultado").innerHTML = "Perfeito! Você conhece muito bem O Lago dos Cisnes!";
+        } 
+        
+        else if (pontos >= 3) {
+            
+            document.getElementById("mensagem-resultado").innerHTML = "Muito bem! Continue estudando as histórias.";
+        } 
+        
+        else {
+            
+            document.getElementById("mensagem-resultado").innerHTML = "Releia a história e tente novamente!";
+        }
+
+        // Atualiza sessão local
+        var pontosGanhos = pontos * 20;
+
+        // enviando ao bd
+        fetch("/usuarios/registrarQuiz", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                idUsuarioServer: sessionStorage.ID_USUARIO,
+                pontosServer: pontosGanhos
+            })
+        }).then(function (res) {
+            if (res.ok) {
+                
+                var pontosAtuais = Number(sessionStorage.PONTUACAO) || 0;
+                sessionStorage.PONTUACAO = pontosAtuais + pontosGanhos;
+ 
+                var qtdAtual = Number(sessionStorage.QUIZZES_FEITOS) || 0;
+                sessionStorage.QUIZZES_FEITOS = qtdAtual + 1;
+ 
+                console.log("Pontuação atualizada para: " + sessionStorage.PONTUACAO);
+            }
+        }).catch(function (erro) {
+            console.log("Erro ao registrar pontuação:", erro);
+        });
+
+    }
+
+    function reiniciar() {
+        perguntaAtual = 0;
+        pontos = 0;
+        document.getElementById("area-quiz").style.display = "block";
+        document.getElementById("area-resultado").style.display = "none";
+        carregarPergunta();
+    }
+
+    // Inicia o quiz
+    carregarPergunta();
+</script>
+
+</html>

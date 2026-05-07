@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ballet History | Histórias</title>
+  <link rel="stylesheet" href="../css/historias.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="menu-lateral">
+    <h1 class="logo">Ballet History</h1>
+    <nav>
+      <a href="dashboard.html" class="item-menu">Dashboard</a>
+      <a href="historias.html" class="item-menu ativo">Histórias</a>
+      <a href="quiz-personagem.html" class="item-menu">Qual personagem sou?</a>
+      <a href="perfil.html" class="item-menu">Meu Perfil</a>
+    </nav>
+    <button class="btn-sair" onclick="sair()">Sair</button>
+  </div>
+
+  <div class="conteudo">
+
+    <div class="boas-vindas">
+      <h2>Histórias do Ballet</h2>
+      <p>Clique em um repertório para conhecer mais histórias e depois fazer o quiz!</p>
+    </div>
+
+    <!-- CARDS DOS BALLETS -->
+    <div class="cards-historias">
+
+      <button class="card-historia" onclick="abrirHistoria('lago')">
+        <div class="icone-historia"> <img class="icone"" src=" ../assets/icon/cisne.png" alt=""></div>
+        <h3>O Lago dos Cisnes</h3>
+        <p>Tchaikovsky • 1877</p>
+        <span class="tag-quiz">Quiz disponível ✓</span>
+      </button>
+
+      <button class="card-historia" onclick="abrirHistoria('giselle')">
+        <div class="icone-historia"><img class="icone"" src=" ../assets/icon/fantasma.png" alt=""></div>
+        <h3>Giselle</h3>
+        <p>Adolphe Adam • 1841</p>
+        <span class="tag-quiz">Quiz disponível ✓</span>
+      </button>
+
+      <button class="card-historia" onclick="abrirHistoria('quebra')">
+        <div class="icone-historia"><img class="icone"" src=" ../assets/icon/nozes.png" alt=""></div>
+        <h3>O Quebra-Nozes</h3>
+        <p>Tchaikovsky • 1892</p>
+        <span class="tag-quiz">Quiz disponível ✓</span>
+      </button>
+
+    </div>
+
+    <!-- HISTÓRIA: O LAGO DOS CISNES -->
+    <div id="janela-lago" class="janela-historia" style="display:none;">
+      <button class="btn-fechar" onclick="fecharHistoria('lago')">Fechar</button>
+      <h1>O Lago dos Cisnes</h1>
+      <p class="compositor">Pyotr Ilyich Tchaikovsky | 1877</p>
+
+      <h2 class="subtitulo">Sinopse</h2>
+      <p>O príncipe Siegfried celebra seu aniversário e deve escolher uma noiva. Durante uma caçada noturna, ele
+        encontra um lago encantado onde cisnes se transformam em jovens mulheres ao pôr do sol. Ele se apaixona pela
+        rainha Odette, que foi transformada em cisne pelo feiticeiro Von Rothbart.</p>
+
+      <h2 class="subtitulo">Os personagens principais</h2>
+      <p><strong>Odette</strong> — A rainha dos cisnes, pura e delicada, transformada por uma maldição. Símbolo do amor
+        verdadeiro.</p>
+      <p><strong>Odile</strong> — O cisne negro, filha do feiticeiro. Engana o príncipe se passando por Odette. Sedutora
+        e misteriosa.</p>
+      <p><strong>Príncipe Siegfried</strong> — Jovem nobre que se apaixona por Odette e promete amor eterno.</p>
+      <p><strong>Von Rothbart</strong> — O vilão feiticeiro que lançou a maldição sobre Odette e o lago.</p>
+
+      <h2 class="subtitulo">A história completa</h2>
+      <p>No topo de uma colina, em um reino muito antigo, vivia o Príncipe Siegfried. Ele estava completando 21
+        anos
+        e o castelo estava em festa! Sua mãe, a Rainha, lhe deu um presente magnífico: uma besta de caça (um arco
+        e
+        flecha especial).</p>
+      <p>
+        Mas ela também lhe deu uma notícia séria: "Siegfried, amanhã, no grande baile, você deverá escolher uma
+        noiva entre as princesas convidadas."
+      </p>
+      <p>
+        Siegfried ficou um pouco triste. Ele não queria se casar por obrigação; ele queria encontrar o amor de
+        verdade. Para distrair a mente, ele pegou seu arco e correu para a floresta, em direção a um lago que
+        brilhava sob a luz da lua.
+      </p>
+
+      <h2 class="subtitulo">O Mistério do Lago</h2>
+      <p>Quando chegou ao lago, o Príncipe viu algo maravilhoso: vários cisnes brancos e elegantes deslizavam
+        pelas
+        águas. Mas, assim que a lua ficou bem alta no céu, aconteceu um milagre. Os cisnes saíram da água e, de
+        repente, as penas sumiram e eles se transformaram em lindas moças!</p>
+      <p>A mais bela de todas era Odette, a Rainha dos Cisnes. Ela usava uma coroa de prata e parecia muito
+        assustada. Siegfried, encantado, prometeu não machucá-la.</p>
+      <p>Odette contou seu segredo: "Um feiticeiro malvado chamado Von Rothbart me transformou em cisne. Só posso
+        ser humana durante a noite. O feitiço só será quebrado se um rapaz que nunca amou ninguém prometa me amar
+        para sempre e case comigo.</p>
+      <p>Siegfried, com o coração batendo forte, jurou que seria ele! Ele a convidou para o baile no dia seguinte
+        para anunciá-la como sua noiva.</p>
+
+      <h2 class="subtitulo">O Truque do Feiticeiro</h2>
+      <p>No dia seguinte, o castelo estava iluminado. Muitas princesas bonitas dançavam para Siegfried, mas ele só
+        pensava em sua rainha cisne.
+      </p>
+      <p>De repente, as portas se abriram e um cavaleiro sombrio entrou: era o feiticeiro Von Rothbart disfarçado!
+        E, ao lado dele, estava uma moça vestida de preto, chamada Odile.</p>
+      <p>Odile era idêntica a Odette, mas seu olhar era maldoso e seu sorriso era de vitória. Siegfried, enganado
+        pela semelhança, achou que ela era a sua amada do lago. Ele dançou com ela e, diante de todo o reino,
+        declarou: "Esta é minha noiva! Eu prometo amá-la para sempre!"</p>
+      <p>Nesse momento, um trovão ecoou pelo castelo. Von Rothbart riu alto e mostrou, na janela, a verdadeira
+        Odette chorando. Siegfried percebeu o erro terrível que cometeu: ele tinha quebrado sua promessa para a
+        pessoa errada!</p>
+
+      <h2 class="subtitulo">A Luta e o Poder do Amor</h2>
+      <p>Desesperado, o Príncipe correu de volta para o lago. Odette estava lá, murchando de tristeza como uma
+        flor sem água. Ela estava morrendo, pois agora o feitiço nunca mais poderia ser quebrado.</p>
+      <p>Von Rothbart apareceu na forma de uma coruja gigante e maligna para separar os dois, mas Siegfried e
+        Odette decidiram que nada, nem mesmo um feitiço, poderia vencer o que eles sentiam.</p>
+
+      <h2 class="subtitulo">O Final Feliz</h2>
+      <p>Eles deram as mãos e enfrentaram o feiticeiro com tanta coragem que o poder de Von Rothbart começou a
+        falhar. O amor deles era tão puro que quebrou as asas do mal.</p>
+      <p>o sacrifício de Odette e Siegfried faz com que eles se tornem espíritos eternos, voando juntos para o
+        céu, onde nenhum feiticeiro pode alcançá-los.</p>
+      <p style="text-align: center; font-weight: bold;">Fim.</p>
+
+      <div class="area-quiz">
+        <p>Terminou de ler? </p>
+        <button class="btn-quiz" onclick="irParaQuiz('lago')">Teste seus conhecimentos!</button>
+      </div>
+    </div>
+
+    <!-- HISTÓRIA: GISELLE -->
+    <div id="janela-giselle" class="janela-historia" style="display:none;">
+      <button class="btn-fechar" onclick="fecharHistoria('giselle')">✕ Fechar</button>
+      <h1>Giselle</h1>
+      <p class="compositor">Adolphe Adam | 1841</p>
+
+      <h2 class="subtitulo">Sinopse</h2>
+      <p>Giselle é uma jovem camponesa de coração puro que morre de desgosto ao descobrir que o homem amado, Albrecht, é
+        na verdade um conde prometido a outra. Mesmo após a morte, seu amor é tão forte que ela o protege das Wilis —
+        espíritos vingativos de noivas mortas.</p>
+
+      <h2 class="subtitulo">Os personagens principais</h2>
+      <p><strong>Giselle</strong> — Jovem inocente e apaixonada. Representa o amor incondicional e o perdão.</p>
+      <p><strong>Albrecht</strong> — Conde que se disfarça de camponês por amor a Giselle, mas tem uma noiva
+        aristocrata.</p>
+      <p><strong>Myrtha</strong> — Rainha das Wilis. Fria e implacável, condena os homens à dança até a morte.</p>
+      <p><strong>Hilarion</strong> — Caçador que ama Giselle e revela a verdadeira identidade de Albrecht por ciúme.</p>
+
+      <h2 class="subtitulo">A história completa</h2>
+      <p>Era uma vez, em um vilarejo escondido entre montanhas cobertas de florestas, uma jovem chamada Giselle.
+        Ela
+        era
+        como um raio de sol: tinha o sorriso mais doce da aldeia e amava dançar mais do que qualquer outra coisa
+        no
+        mundo.</p>
+      <p>Sua mãe, a Dona Berthe, vivia preocupada. "Giselle, minha filha, não dance tanto! Seu coração é
+        fraquinho,
+        como
+        as asas de uma borboleta," ela dizia. Mas Giselle apenas ria e rodopiava, sentindo que a música estava
+        dentro
+        dela.</p>
+
+      <h2 class="subtitulo">O Segredo do Cavalheiro</h2>
+      <p>Um dia, apareceu no vilarejo um rapaz chamado Loys. Ele dizia ser um camponês comum, mas tinha um jeito
+        elegante de andar. Na verdade, ele era o Príncipe Albrecht, que estava cansado de viver no castelo e se
+        disfarçou para viver uma aventura.</p>
+      <p>Albrecht e Giselle se apaixonaram. Eles brincavam de tirar pétalas das margaridas: "Bem-me-quer,
+        mal-me-quer...". Quando a flor dizia "mal-me-quer", Giselle ficava triste, mas Albrecht, com um truque de
+        mágica
+        nas mãos, mostrava que o amor deles era verdadeiro.</p>
+      <p>Mas havia um problema: Hilarion, o caçador. Ele também gostava de Giselle e desconfiava do rapaz
+        misterioso.
+        Um
+        dia, Hilarion entrou escondido na cabana de Loys e encontrou uma espada de ouro e um manto de veludo. "Um
+        camponês não tem essas coisas!", pensou ele.</p>
+
+      <h2 class="subtitulo">O Baile da Colheita e a Tristeza</h2>
+      <p>Durante a festa da colheita, a aldeia estava toda enfeitada. De repente, trombetas soaram! Era uma
+        comitiva
+        real que passava por ali. Entre eles estava a Princesa Bathilde, a noiva de verdade do Príncipe Albrecht.
+      </p>
+      <p>Hilarion, aproveitando a chance, mostrou a espada de ouro para todo mundo. Ele revelou que "Loys" era, na
+        verdade, um Príncipe mentiroso. O coração de Giselle, que já era tão frágil, não aguentou o peso daquela
+        tristeza. Ela ficou tão confusa e dodói que começou a dançar sozinha, lembrando-se de cada promessa que
+        ele
+        fez.
+        E, no meio de um suspiro, ela fechou os olhos para sempre, cercada por flores e lágrimas.</p>
+
+      <h2 class="subtitulo">As Fadas das Sombras</h2>
+      <p>Mas a história não termina aí, pois o mundo tem segredos. Dizem que, no fundo da floresta, vivem as
+        Wilis.
+        Elas
+        são fadinhas da noite, vestidas de branco, que amam dançar sob a luz da lua. Elas são lideradas por
+        Myrtha,
+        uma
+        rainha muito brava e séria.</p>
+      <p>As Wilis não gostam de homens que quebram promessas. Quando Hilarion foi visitar o túmulo de Giselle à
+        noite,
+        as Wilis o cercaram e o fizeram dançar tanto, mas tanto, que ele sumiu no lago da floresta.</p>
+
+      <h2 class="subtitulo">A Força do Perdão</h2>
+      <p>Logo depois, o Príncipe Albrecht também apareceu, chorando de arrependimento. Myrtha, a rainha das Wilis,
+        apareceu das sombras: — "Dance com ele, Giselle!", ordenou a rainha. "Dance até que ele não aguente mais!"
+      </p>
+      <p>Giselle, que agora era uma linda fada branca, apareceu para Albrecht. Mas, em vez de ficar brava, ela
+        sentiu
+        apenas amor. Ela sabia que ele tinha errado, mas queria salvá-lo. Ela segurou as mãos dele quando ele
+        estava
+        cansado. Ela dançou bem devagar para que ele pudesse descansar. Ela deu a ele a força que vinha do seu
+        coração
+        de fada.</p>
+      <p>Eles dançaram a noite inteira. Albrecht estava quase desmaiando quando, de repente... BÉÉÉÉM! O sino da
+        igreja
+        tocou. O sol começou a nascer!</p>
+
+      <h2 class="subtitulo">O Final Feliz</h2>
+      <p>As Wilis detestam o sol e tiveram que desaparecer. Myrtha tentou segurar Giselle, mas o perdão da menina
+        era
+        tão forte que a quebrou o feitiço. Giselle não precisava mais ser uma Wili triste. Ela tinha salvado o seu
+        amigo.</p>
+      <p>Ela deu um último beijo de brisa no rosto de Albrecht e voltou para o seu jardim de flores, onde
+        finalmente
+        poderia descansar em paz. Albrecht aprendeu a lição: que o amor de verdade não mente e que o perdão é o
+        presente
+        mais bonito que alguém pode ganhar.</p>
+      <p style="text-align: center; font-weight: bold;">Fim.</p>
+
+      <div class="area-quiz">
+        <p>Terminou de ler? </p>
+        <button class="btn-quiz" onclick="irParaQuiz('giselle')">Teste seus conhecimentos!</button>
+      </div>
+    </div>
+
+    <!-- HISTÓRIA: O QUEBRA-NOZES -->
+    <div id="janela-quebra" class="janela-historia" style="display:none;">
+      <button class="btn-fechar" onclick="fecharHistoria('quebra')">✕ Fechar</button>
+      <h1>O Quebra-Nozes</h1>
+      <p class="compositor">Pyotr Ilyich Tchaikovsky | 1892</p>
+
+      <h2 class="subtitulo">Sinopse</h2>
+      <p>Na noite de Natal, a jovem Clara recebe de presente um boneco quebra-nozes. Naquela mesma noite, ela embarca em
+        uma viagem mágica pelo Reino dos Doces, guiada pelo boneco transformado em príncipe.</p>
+
+      <h2 class="subtitulo">Os personagens principais</h2>
+      <p><strong>Clara (Marie)</strong> — A protagonista curiosa e corajosa. Uma criança que vive uma aventura
+        extraordinária.</p>
+      <p><strong>O Príncipe Quebra-Nozes</strong> — Começa como um boneco de madeira e se transforma em príncipe após
+        ser salvo por Clara.</p>
+      <p><strong>O Rei dos Ratos</strong> — O vilão que ataca os soldados de brinquedo e o Quebra-Nozes.</p>
+      <p><strong>A Fada Açucarada</strong> — Rainha do Reino dos Doces, recebe Clara e o príncipe com uma celebração
+        grandiosa.</p>
+
+      <h2 class="subtitulo">A história completa</h2>
+      <p>Tudo começa na casa da família Stahlbaum. É véspera de Natal e a sala está brilhando! Clara e seu irmão
+        Fritz esperam ansiosos. Quando a porta se abre, eles veem uma árvore gigante, cheia de velas e enfeites de
+        açúcar.</p>
+      <p>
+        De repente, as luzes piscam e um homem alto, com um tapa-olho e uma capa preta, entra na sala. É o Padrinho
+        Drosselmeyer. Ele não é um convidado comum; ele é um inventor de relógios e um criador de magias! Ele traz
+        bonecos mecânicos que dançam sozinhos, mas o presente que ele entrega para Clara é o mais especial: um
+        Quebra-Nozes de madeira, com um uniforme de soldado e um sorriso valente.
+      </p>
+      <p>
+        Fritz, sendo um menino travesso, tenta usar o boneco para quebrar uma noz muito dura e... CRACK! O
+        Quebra-Nozes quebra. Clara chora, mas Drosselmeyer, com um lenço mágico e um carinho, conserta o boneco. A
+        festa acaba, os convidados vão embora e Clara coloca seu soldadinho para dormir em uma caminha debaixo da
+        árvore.
+      </p>
+
+      <h2 class="subtitulo">O Exército das Sombras</h2>
+      <p>No meio da noite, Clara perde o sono e vai até a sala. Quando o relógio bate meia-noite, o chão começa a
+        estalar. O Padrinho Drosselmeyer aparece sentado no topo do relógio e, com um movimento da mão, faz a árvore
+        crescer tanto que Clara se sente do tamanho de uma formiguinha!</p>
+      <p>É aí que o perigo surge. De todos os bueiros e frestas da casa, saem ratos de olhos vermelhos. E então, o
+        chão explode e surge o Rei dos Ratos! Ele é enorme, usa uma coroa de ouro e comanda um exército faminto que
+        quer destruir os brinquedos.</p>
+      <p>O Quebra-Nozes ganha vida! Ele desembainha sua espada e grita para os soldadinhos de chumbo: "Ataquem!". A
+        batalha é barulhenta, com canhões que atiram balas de goma. O Rei dos Ratos encurrala o Quebra-Nozes e está
+        prestes a vencê-lo. </p>
+      <p>Clara, vendo seu amigo em perigo, tira sua sapatilha e a joga com toda a força no Rei dos Ratos. POF! O
+        vilão fica tonto, o Quebra-Nozes dá o golpe final e o exército de ratos foge para sempre, levando seu rei
+        derrotado.</p>
+
+      <h2 class="subtitulo">A Floresta de Neve</h2>
+      <p>Com a vitória, acontece uma transformação mágica: o boneco de madeira se torna um Príncipe de verdade! Ele
+        pega a mão de Clara e a convida para conhecer o seu reino.
+      </p>
+      <p>Eles caminham por uma floresta onde a neve não é gelada, mas sim feita de pó de estrela. Lá, os flocos de
+        neve ganham vida e dançam ao redor deles, formando um caminho de cristais brancos que brilha sob a luz da
+        lua. É a "Valsa dos Flocos de Neve", que limpa o ar de toda a maldade dos ratos e prepara o caminho para a
+        alegria.</p>
+
+      <h2 class="subtitulo">O Reino dos Doces</h2>
+      <p>Eles cruzam um rio de limonada e chegam ao Reino dos Doces. Quem os recebe é a Fada Açucarada, que brilha
+        como se tivesse sido polvilhada com açúcar.</p>
+      <p> O Príncipe conta como Clara foi corajosa e como ela derrotou o terrível Rei dos Ratos com apenas uma
+        sapatilha.A Fada Açucarada fica tão impressionada que organiza um banquete de danças! Clara senta em um
+        trono de marshmallow e assiste: </p>
+      <p>Chocolate: Dançarinos espanhóis que giram com energia,</p>
+      <p>Café: Bailarinas árabes que se movem como o vapor de uma bebida quentinha.</p>
+      <p>Chá: Acrobatas chineses que saltam de dentro de bules.</p>
+      <p>Bengalas de Açúcar: Soldados russos que dão saltos incríveis.</p>
+      <p>Valsa das Flores: Um jardim inteiro que ganha vida e dança em volta de Clara.</p>
+
+
+      <h2 class="subtitulo">O Despertar</h2>
+      <p>Clara está tão feliz que sente que poderia voar. Ela abraça o Príncipe e a Fada Açucarada... mas,
+        lentamente, as cores do castelo de doces começam a ficar clarinhas. O cheiro de chocolate vai sumindo e o
+        barulho da festa vira um silêncio gostoso.</p>
+      <p>Clara abre os olhos e se vê deitada debaixo da sua árvore de Natal. O sol da manhã está entrando pela
+        janela. No seu colo, está o boneco de madeira, o Quebra-Nozes, com seu sorriso valente. Ela olha para o lado
+        e vê a sua sapatilha jogada no canto da sala.</p>
+      <p>Foi um sonho? Ou a magia realmente aconteceu? Clara sorri, sabendo que, enquanto ela tiver imaginação, o
+        Rei dos Ratos nunca voltará e o Reino dos Doces estará sempre à espera dela.</p>
+      <p style="text-align: center; font-weight: bold;">Fim.</p>
+
+      <div class="area-quiz">
+        <p>Terminou de ler? </p>
+        <button class="btn-quiz" onclick="irParaQuiz('quebra')">Teste seus conhecimentos!</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script>
+
+
+  // Verificando se está logado
+  if (!sessionStorage.NOME_USUARIO) {
+    window.location = "../login.html";
+  }
+
+  // converte o id ('lago', 'giselle', 'quebra') no id_ballet do banco
+  var idsBallet = { lago: 1, giselle: 2, quebra: 3 };
+
+  function abrirHistoria(id) {
+    var janelas = document.querySelectorAll(".janela-historia");
+   
+    for (var i = 0; i < janelas.length; i++) {
+      janelas[i].style.display = "none";
+    }
+
+    document.getElementById("janela-" + id).style.display = "block";
+    document.getElementById("janela-" + id).scrollIntoView({ behavior: "smooth" });
+
+    // registro da leitura no bd
+    fetch("/usuarios/registrarLeitura", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        idUsuarioServer: sessionStorage.ID_USUARIO,
+        idBalletServer: idsBallet[id]  
+      })
+    }).catch(function (erro) { console.log("Erro ao registrar leitura:", erro); });
+  }
+
+  function fecharHistoria(id) {
+    document.getElementById("janela-" + id).style.display = "none";
+  }
+
+  function irParaQuiz(id) {
+    window.location = "quiz-" + id + ".html";
+  }
+
+  function sair() {
+    sessionStorage.clear();
+    window.location = "../login.html";
+  }
+</script>
+
+</html>

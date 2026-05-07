@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #d8c8b8;
+  display: flex;
+}
+
+/* Menu lateral */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #5d4d3e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  gap: 30px;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  color: #f8f1e9;
+  font-size: 18px;
+  text-align: center;
+}
+
+.menu-lateral nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.item-menu {
+  text-decoration: none;
+  color: #d8c8b8;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.item-menu:hover,
+.item-menu.ativo {
+  background-color: #8d7966;
+  color: #f8f1e9;
+}
+
+.btn-sair {
+  margin-top: auto;
+  background-color: transparent;
+  border: 2px solid #a8a39d;
+  color: #a8a39d;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-sair:hover {
+  background-color: #a8a39d;
+  color: #5d4d3e;
+}
+
+.conteudo {
+  margin-left: 220px;
+  padding: 40px;
+  width: 100%;
+}
+
+.boas-vindas {
+  margin-bottom: 30px;
+}
+
+.boas-vindas h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  color: #483d33;
+}
+
+.boas-vindas p {
+  color: #8d7966;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* CARDS DOS BALLETS */
+.cards-historias {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.card-historia {
+  background-color: #f8f1e9;
+  border: 2px solid #d8c8b8;
+  border-radius: 0 25px 0 25px;
+  padding: 30px 25px;
+  flex: 1;
+  min-width: 200px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card-historia:hover {
+  background-color: #8d7966;
+  border-color: #8d7966;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-historia:hover h3,
+.card-historia:hover p,
+.card-historia:hover .tag-quiz {
+  color: #f8f1e9;
+}
+
+.icone-historia {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.card-historia h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: #483d33;
+  margin-bottom: 5px;
+}
+
+.card-historia p {
+  font-size: 12px;
+  color: #a8a39d;
+  margin-bottom: 10px;
+}
+
+.tag-quiz {
+  font-size: 11px;
+  color: #8d7966;
+  font-weight: 600;
+}
+
+/* JANELA DA HISTÓRIA */
+.janela-historia {
+  background-color: #f8f1e9;
+  border-radius: 0 30px 0 30px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.janela-historia h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 30px;
+  color: #483d33;
+  margin-bottom: 5px;
+}
+
+.compositor {
+  color: #a8a39d;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.subtitulo {
+  font-family: 'Cinzel', serif;
+  font-size: 17px;
+  color: #8d7966;
+  margin: 20px 0 10px;
+  border-bottom: 1px solid #d8c8b8;
+  padding-bottom: 5px;
+}
+
+.janela-historia p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #5d4d3e;
+  margin-bottom: 12px;
+}
+
+.btn-fechar {
+  float: right;
+  background-color: #d8c8b8;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #5d4d3e;
+  transition: 0.2s;
+}
+
+.btn-fechar:hover {
+  background-color: #a8a39d;
+  color: #f8f1e9;
+}
+
+/* ÁREA DO QUIZ */
+.area-quiz {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f0e8df;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.area-quiz p {
+  color: #8d7966;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.btn-quiz {
+  background-color: #8d7966;
+  color: #f8f1e9;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-quiz:hover {
+  background-color: #5d4d3e;
+}
+
+.icone {
+  height: 60px;
+}
